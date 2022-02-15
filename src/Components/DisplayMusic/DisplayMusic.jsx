@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./DisplayMusic.css";
 
-const DisplayMusic = (props) => {
+function DisplayMusic(props) {
+  const [displayAllMusic, setDisplayAllMusic] = useState([]);
+
+  useEffect(() => {
+    getAllMusic();
+  }, []);
+
+  async function getAllMusic() {
+    let response = await axios.get(
+      "http://www.devcodecampmusiclibrary.com/api/music"
+    );
+    setDisplayAllMusic(response.data);
+  }
+  console.log(displayAllMusic);
+
+  // async function filterAlbums
+  //filter music
+  // let displayMusic= [];
+  // let filterAlbums = displayMusic.filter(function(album){
+  //   if(album)
+  // })
+
+  // displayAllMusic = { displayAllMusic };
+
   return (
     <div className="allMusic">
       <div className="scrollable">
@@ -17,7 +41,7 @@ const DisplayMusic = (props) => {
             </tr>
           </thead>
           <tbody>
-            {props.displayAllMusic.map((info, index) => {
+            {displayAllMusic.map((info, index) => {
               return (
                 <tr key={index}>
                   <td>{index + 1}</td>
@@ -34,6 +58,5 @@ const DisplayMusic = (props) => {
       </div>
     </div>
   );
-};
-
+}
 export default DisplayMusic;
