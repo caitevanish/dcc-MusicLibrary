@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBar from "../SearchBar/SearchBar";
 import "./DisplayMusic.css";
 
 function DisplayMusic(props) {
-  const [displayAllMusic, setDisplayAllMusic] = useState([]);
-  const [filteredMusic, setFilteredMusic] = useState([]);
+  // const [displayAllMusic, setDisplayAllMusic] = useState([]);
+  const [filteredMusic, setFilteredMusic] = useState(props.displayAllMusic);
 
   useEffect(() => {
-    getAllMusic();
+    setFilteredMusic(props.displayAllMusic);
   }, []);
 
-  async function getAllMusic() {
-    let response = await axios.get(
-      "http://www.devcodecampmusiclibrary.com/api/music"
-    );
-    setDisplayAllMusic(response.data);
-  }
-  console.log(displayAllMusic);
+  // useEffect(() => {
+  //   getAllMusic();
+  // }, []);
+
+  // async function getAllMusic() {
+  //   let response = await axios.get(
+  //     "http://www.devcodecampmusiclibrary.com/api/music"
+  //   );
+  //   setDisplayAllMusic(response.data);
+  // }
+  // console.log(displayAllMusic);
 
   function getSearchResults(results) {
     setFilteredMusic(results);
   }
-
   //filter music
   // let displayMusic= [];
   // let filterAlbums = displayMusic.filter(function(album){
@@ -34,7 +37,7 @@ function DisplayMusic(props) {
   return (
     <div className="searchbar">
       <SearchBar
-        displayAllMusic={displayAllMusic}
+        // displayAllMusic={displayAllMusic}
         getSearchResults={getSearchResults}
       />
       <div className="allMusic">
