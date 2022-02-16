@@ -8,9 +8,6 @@ const NavBar = (props) => {
     <Navbar className="dark fixed-top">
       <Container>
         <Navbar.Brand href="#home">Miles Above Music</Navbar.Brand>
-        {/* <Nav className="me-auto">
-      <Nav.Link href="#MyPosts">My Posts</Nav.Link>
-    </Nav> */}
       </Container>
     </Navbar>
   );
