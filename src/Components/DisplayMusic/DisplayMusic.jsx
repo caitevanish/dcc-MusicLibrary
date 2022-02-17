@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import SearchBar from "../SearchBar/SearchBar";
-import "./DisplayMusic.css";
+// import SearchBar from "../SearchBar/SearchBar";
+// import "./DisplayMusic.css";
+
 //To-Do:
 //Make buttons that will show up on the song line to update or delete the song
 
@@ -8,12 +9,14 @@ function DisplayMusic(props) {
   const [filteredMusic, setFilteredMusic] = useState(props.musicTable);
 
   useEffect(() => {
-    setFilteredMusic(props.musicTable);
-  }, [props.musicTable]);
+    getSearchResults(props.musicTable);
+  }, [props.musicTable]); //?
+  // }, []);
 
   function getSearchResults(results) {
     setFilteredMusic(results);
   }
+
   //filter music
   // let displayMusic= [];
   // let filterAlbums = displayMusic.filter(function(album){
@@ -24,7 +27,8 @@ function DisplayMusic(props) {
 
   return (
     <div className="searchbar">
-      <SearchBar getSearchResults={getSearchResults} />
+      {/* <SearchBar getSearchResults={getSearchResults} /> */}
+      {/* <SearchBar results={getSearchResults} /> */}
       <div className="allMusic">
         <div className="scrollable">
           <table className="table table-bordered">
@@ -48,8 +52,13 @@ function DisplayMusic(props) {
                     <td>{info.title}</td>
                     <td>{info.album}</td>
                     <td>{info.genre}</td>
-                    <td>{info.releaseDate}</td>
-                    <td></td> {/* Add edit/delete buttons here */}
+                    <td>{info.release_date}</td>
+                    <td></td> {/* Add edit/delete buttons here  */}
+                    <button onClick className="btn btn-danger">
+                      {" "}
+                      {/* Create an onDeleteSong function?  */}
+                      Delete
+                    </button>
                   </tr>
                 );
               })}

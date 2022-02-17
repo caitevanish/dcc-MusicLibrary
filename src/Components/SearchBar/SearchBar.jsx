@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import "./SearchBar.css";
+// import "./SearchBar.css";
 
 const SearchBar = (props) => {
   const [searchInput, setSearchInput] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
-    filterMusic();
-    setSearchInput("");
+    // filterMusic();
+    // setSearchInput('');
   }
 
   function filterMusic() {
@@ -21,15 +21,15 @@ const SearchBar = (props) => {
         return false;
       }
     });
-    props.getSearchResults(searchResults);
+    // props.getSearchResults(searchResults);
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form-grid form">
+    <form onSubmit={handleSubmit}>
       <label className="search-bar">Search Artists: </label>
       <input
         type="text"
-        className=""
+        className="search-bar"
         value={searchInput}
         onChange={(event) => setSearchInput(event.target.value)}
       ></input>

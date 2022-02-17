@@ -13,9 +13,7 @@ function App() {
     getAllMusic();
   }, []);
   async function getAllMusic() {
-    let response = await axios.get(
-      "http://www.devcodecampmusiclibrary.com/api/music"
-    );
+    let response = await axios.get("http://127.0.0.1:8000/music/");
     setMusicTable(response.data);
   }
 
