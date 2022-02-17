@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import "./DisplayMusic.css";
+//To-Do:
+//Make buttons that will show up on the song line to update or delete the song
 
 function DisplayMusic(props) {
   const [filteredMusic, setFilteredMusic] = useState(props.musicTable);
@@ -34,6 +36,7 @@ function DisplayMusic(props) {
                 <th>Album</th>
                 <th>Genre</th>
                 <th>Release Date</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -46,6 +49,7 @@ function DisplayMusic(props) {
                     <td>{info.album}</td>
                     <td>{info.genre}</td>
                     <td>{info.releaseDate}</td>
+                    <td></td> {/* Add edit/delete buttons here */}
                   </tr>
                 );
               })}

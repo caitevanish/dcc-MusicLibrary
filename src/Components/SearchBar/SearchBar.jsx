@@ -13,7 +13,8 @@ const SearchBar = (props) => {
   function filterMusic() {
     let searchResults = props.displayAllMusic.filter(function (song) {
       if (
-        song.artist.includes(searchInput) | song.album.includes(searchInput)
+        song.artist.includes(searchInput) ||
+        song.album.includes(searchInput)
       ) {
         return true;
       } else {
