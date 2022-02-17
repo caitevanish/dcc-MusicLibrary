@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  const [displayAllMusic, setDisplayAllMusic] = useState([]);
+  const [musicTable, setMusicTable] = useState([]);
 
   useEffect(() => {
     getAllMusic();
@@ -16,7 +16,7 @@ function App() {
     let response = await axios.get(
       "http://www.devcodecampmusiclibrary.com/api/music"
     );
-    setDisplayAllMusic(response.data);
+    setMusicTable(response.data);
   }
 
   return (
@@ -29,7 +29,7 @@ function App() {
 
         <div className="col-md-5">
           <div className="box">
-            <DisplayMusic displayAllMusic={displayAllMusic} />
+            <DisplayMusic musicTable={musicTable} />
           </div>
         </div>
       </div>
