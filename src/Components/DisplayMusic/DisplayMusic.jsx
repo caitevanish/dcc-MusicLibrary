@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 // import "./DisplayMusic.css";
 
 //To-Do:
@@ -9,12 +9,25 @@ function DisplayMusic(props) {
   const [filteredMusic, setFilteredMusic] = useState(props.musicTable);
 
   useEffect(() => {
-    getSearchResults(props.musicTable);
-  }, [props.musicTable]); //?
+    setFilteredMusic(props.musicTable);
+  }, [props.musicTable]);
   // }, []);
 
-  function getSearchResults(results) {
-    setFilteredMusic(results);
+  function getSearchResults(search) {
+    let filteredList = props.musicTable.filter((result) => {
+      if (
+        result.title.includes(search) ||
+        result.artist.includes(search) ||
+        result.album.includes(search) ||
+        result.genre.includes(search) ||
+        result.release_date(search)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    setFilteredMusic(filteredList);
   }
 
   //filter music
@@ -34,29 +47,29 @@ function DisplayMusic(props) {
           <table className="table table-bordered">
             <thead>
               <tr>
-                <th>Index</th>
+                {/* <th>Index</th> */}
                 <th>Artist</th>
                 <th>Song Title</th>
                 <th>Album</th>
                 <th>Genre</th>
                 <th>Release Date</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
               {filteredMusic.map((info, index) => {
                 return (
                   <tr key={index}>
-                    <td>{index + 1}</td>
                     <td>{info.artist}</td>
                     <td>{info.title}</td>
                     <td>{info.album}</td>
                     <td>{info.genre}</td>
                     <td>{info.release_date}</td>
-                    <td></td> {/* Add edit/delete buttons here  */}
+                    <button onClick className="btn btn-primary">
+                      {/* <button onClick={setUpdate} className="btn btn-primary"> */}
+                      Edit
+                    </button>
                     <button onClick className="btn btn-danger">
-                      {" "}
-                      {/* Create an onDeleteSong function?  */}
+                      {/* <button onClick={setDelete} className="btn btn-danger"> */}
                       Delete
                     </button>
                   </tr>

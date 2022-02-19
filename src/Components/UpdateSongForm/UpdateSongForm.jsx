@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Modal from "react-bootstrap/Modal";
-import "./SongForm.css";
-//the form/modal will pop up when button "Add new song" is pushed.
-//Buttons will show up on the song line to update or delete the song
 
-const SongForm = (props) => {
-  //Bind each input to a state variabl
+const UpdateSongForm = (props) => {
+  //Hoist up original song info from MusicLibrary to display as values to be changed
+
   const [newTitle, setNewTitle] = useState("");
   const [newArtist, setNewArtist] = useState("");
   const [newAlbum, setNewAlbum] = useState("");
@@ -33,6 +30,7 @@ const SongForm = (props) => {
           onChange={(event) => setNewTitle(event.target.value)}
           value={newTitle}
           className="form-control"
+          placeholder="{song.}"
         ></input>
       </div>
       <div className="form-group">
@@ -42,6 +40,7 @@ const SongForm = (props) => {
           onChange={(event) => setNewArtist(event.target.value)}
           value={newArtist}
           className="form-control"
+          placeholder="{song.}"
         ></input>
       </div>
       <div className="form-group">
@@ -51,6 +50,7 @@ const SongForm = (props) => {
           onChange={(event) => setNewAlbum(event.target.value)}
           value={newAlbum}
           className="form-control"
+          placeholder="{song.}"
         ></input>
       </div>
       <div className="form-group">
@@ -60,6 +60,7 @@ const SongForm = (props) => {
           onChange={(event) => setNewGenre(event.target.value)}
           value={newGenre}
           className="form-control"
+          placeholder="{song.}"
         ></input>
       </div>
       <div className="form-group">
@@ -69,6 +70,7 @@ const SongForm = (props) => {
           onChange={(event) => setNewReleaseDate(event.target.value)}
           value={newReleaseDate}
           className="form-control"
+          placeholder="{song.}"
         ></input>
       </div>
       <button onSubmit={handleSubmit} type="submit">
@@ -78,4 +80,4 @@ const SongForm = (props) => {
   );
 };
 
-export default SongForm;
+export default UpdateSongForm;
