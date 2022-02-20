@@ -13,7 +13,7 @@ const TempModalSongForm = (props) => {
     event.preventDefault();
     let newSong = {
       title: newTitle,
-      nartist: newArtist,
+      artist: newArtist,
       album: newAlbum,
       genre: newGenre,
       release_date: newReleaseDate,

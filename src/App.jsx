@@ -1,17 +1,16 @@
-import "./App.css";
-import React from "react";
-import DisplayMusic from "./Components/DisplayMusic/DisplayMusic.jsx";
-import NavBar from "./Components/Navbar/Navbar.jsx";
-import WelcomeHeader from "./Components/WelcomeHeader/WelcomeHeader.jsx";
-import SearchBar from "./Components/SearchBar/SearchBar";
+import './App.css';
+import React, { useState, useEffect } from 'react';
+import MusicTable from './Components/MusicTable/MusicTable.jsx';
+import NavBar from './Components/Navbar/Navbar.jsx';
+import WelcomeHeader from './Components/WelcomeHeader/WelcomeHeader.jsx';
+import SearchBar from './Components/SearchBar/SearchBar';
 // import SongForm from "./Components/SongForm/SongForm";
-import TempModalSongForm from "./Components/SongForm/SongForm";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import TempModalSongForm from './Components/SongForm/SongForm';
+import axios from 'axios';
 
 function App() {
   const [musicTable, setMusicTable] = useState([]);
-
+  const [filteredMusic, setFilteredMusic] = useState([]);
   // const [newSong, setNewSong] = useState("");
 
   useEffect(() => {
@@ -19,32 +18,46 @@ function App() {
   }, []);
 
   async function getAllMusic() {
-    let response = await axios.get("http://127.0.0.1:8000/music/");
+    let response = await axios.get('http://127.0.0.1:8000/music/');
     setMusicTable(response.data);
+  }
+
+  useEffect(() => {
+    setFilteredMusic(musicTable);
+  }, [musicTable]);
+
+  function getSearchResults(searchKeyword) {
+    searchKeyword = searchKeyword.toLowerCase();
+    let filteredList = musicTable.filter((song) => {
+      return (
+        song.title.toLowerCase().includes(searchKeyword) ||
+        song.artist.toLowerCase().includes(searchKeyword) ||
+        song.album.toLowerCase().includes(searchKeyword) ||
+        song.genre.toLowerCase().includes(searchKeyword) ||
+        song.release_date.toLowerCase().includes(searchKeyword)
+      );
+    });
+    setFilteredMusic(filteredList);
   }
 
   function addSong(songToCreate) {
     console.log(songToCreate);
-    // let newSong = await axios.post("http://127.0.0.1:8000/music/")
-    // if (newSong.status ==
-    //Axios POST request here!!
-    //If 200 status, then getAllMusic
     return;
   }
 
   return (
-    <div className="app">
-      <div className="navbar">
+    <div className='app'>
+      <div className='navbar'>
         <NavBar />
       </div>
-      <div className="row">
-        <div className="column-left col-md-6">
+      <div className='row'>
+        <div className='column-left col-md-6'>
           <WelcomeHeader />
-          <SearchBar results={getSearchResults} />
-          <TempModalSongForm addSong={addSong} />
+          <SearchBar getSearchResults={getSearchResults} />
+          {/* <TempModalSongForm addSong={addSong} /> */}
         </div>
-        <div className="column-right col-md-6">
-          <DisplayMusic musicTable={musicTable} />
+        <div className='column-right col-md-6'>
+          <MusicTable filteredMusic={filteredMusic} />
         </div>
       </div>
     </div>
