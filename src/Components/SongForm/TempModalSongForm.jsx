@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Modal } from "react-bootstrap/Modal";
+import React, { useState } from 'react';
+import { Modal } from 'react-bootstrap/Modal';
 
 const TempModalSongForm = (props) => {
   //Bind each input to a state variabl
-  const [newTitle, setNewTitle] = useState("");
-  const [newArtist, setNewArtist] = useState("");
-  const [newAlbum, setNewAlbum] = useState("");
-  const [newGenre, setNewGenre] = useState("");
-  const [newReleaseDate, setNewReleaseDate] = useState("");
+  const [newTitle, setNewTitle] = useState('');
+  const [newArtist, setNewArtist] = useState('');
+  const [newAlbum, setNewAlbum] = useState('');
+  const [newGenre, setNewGenre] = useState('');
+  const [newReleaseDate, setNewReleaseDate] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -21,7 +21,7 @@ const TempModalSongForm = (props) => {
     props.addSong(newSong);
   }
 
-  function Example() {
+  function openModal() {
     const [show, setShow] = useState(false);
 
     const closeModal = () => setShow(false);
@@ -29,7 +29,7 @@ const TempModalSongForm = (props) => {
 
     return (
       <>
-        <Button variant="primary" onClick={openModal}>
+        <Button variant='primary' onClick={openModal}>
           Add a New Song
         </Button>
         <Modal show={show} onHide={closeModal}>
@@ -38,61 +38,61 @@ const TempModalSongForm = (props) => {
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="song_title">Song Title</label>
+              <div className='form-group'>
+                <label htmlFor='song_title'>Song Title</label>
                 <input
-                  type="text"
+                  type='text'
                   onChange={(event) => setNewTitle(event.target.value)}
                   value={newTitle}
-                  className="form-control"
+                  className='form-control'
                 ></input>
               </div>
-              <div className="form-group">
-                <label htmlFor="artist">Artist</label>
+              <div className='form-group'>
+                <label htmlFor='artist'>Artist</label>
                 <input
-                  type="text"
+                  type='text'
                   onChange={(event) => setNewArtist(event.target.value)}
                   value={newArtist}
-                  className="form-control"
+                  className='form-control'
                 ></input>
               </div>
-              <div className="form-group">
-                <label htmlFor="album">Album</label>
+              <div className='form-group'>
+                <label htmlFor='album'>Album</label>
                 <input
-                  type="text"
+                  type='text'
                   onChange={(event) => setNewAlbum(event.target.value)}
                   value={newAlbum}
-                  className="form-control"
+                  className='form-control'
                 ></input>
               </div>
-              <div className="form-group">
-                <label htmlFor="genre">Genre</label>
+              <div className='form-group'>
+                <label htmlFor='genre'>Genre</label>
                 <input
-                  type="text"
+                  type='text'
                   onChange={(event) => setNewGenre(event.target.value)}
                   value={newGenre}
-                  className="form-control"
+                  className='form-control'
                 ></input>
               </div>
-              <div className="form-group">
-                <label htmlFor="release_date">Release Date</label>
+              <div className='form-group'>
+                <label htmlFor='release_date'>Release Date</label>
                 <input
-                  type="date"
+                  type='date'
                   onChange={(event) => setNewReleaseDate(event.target.value)}
                   value={newReleaseDate}
-                  className="form-control"
+                  className='form-control'
                 ></input>
               </div>
-              <button onSubmit={handleSubmit} type="submit">
+              <button onSubmit={handleSubmit} type='submit'>
                 Submit
               </button>
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant='secondary' onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant='primary' onClick={handleClose}>
               Save Changes
             </Button>
           </Modal.Footer>

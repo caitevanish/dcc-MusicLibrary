@@ -3,7 +3,13 @@
   text-align: center;
 }
 
-.form {
-  text-align: center;
-  width: 100%;
+.form-control {
+  text-align: left;
+  width: 60%;
+  align-items: center;
 }
+
+/* .form-control {
+  background-color: black;
+  color: white;
+} */

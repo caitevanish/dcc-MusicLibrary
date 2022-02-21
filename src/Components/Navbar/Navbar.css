@@ -2,10 +2,12 @@
   padding-top: 1em;
   padding-bottom: 1em;
   background-color: #3b2630;
+  text-align: center;
 }
 /* a.navbar-brand {
   
 } */
 a.navbar-brand {
   color: #ffc87e;
+  text-align: center;
 }

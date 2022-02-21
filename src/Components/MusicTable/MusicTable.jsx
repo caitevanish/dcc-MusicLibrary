@@ -3,10 +3,11 @@ import SearchBar from '../SearchBar/SearchBar';
 // import "./MusicTable.css";
 
 function MusicTable({ filteredMusic }) {
+ 
+  function deleteSong()
+
   return (
-    <div className='searchbar'>
-      {/* <SearchBar getSearchResults={getSearchResults} /> */}
-      {/* <SearchBar results={getSearchResults} /> */}
+    <>
       <div className='allMusic'>
         <div className='scrollable'>
           <table className='table table-bordered'>
@@ -30,12 +31,17 @@ function MusicTable({ filteredMusic }) {
                     <td>{info.release_date}</td>
                     <td>
                       <button className='btn btn-primary'>
-                        {/* <button onClick={setUpdate} className="btn btn-primary"> */}
-                        Edit
+                        {/* <button
+                          onClick={setEditSong}
+                          className='btn btn-primary'
+                        >
+                          Edit
+                        </button> */}
                       </button>
                       <button className='btn btn-danger'>
-                        {/* <button onClick={setDelete} className="btn btn-danger"> */}
-                        Delete
+                        <button onClick={setDelete} className='btn btn-danger'>
+                          Delete
+                        </button>
                       </button>
                     </td>
                   </tr>
@@ -45,7 +51,7 @@ function MusicTable({ filteredMusic }) {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 export default MusicTable;

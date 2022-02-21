@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import "./SearchBar.css";
+import './SearchBar.css';
 
 const SearchBar = ({ getSearchResults }) => {
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -18,13 +18,14 @@ const SearchBar = ({ getSearchResults }) => {
   // console.log(searchKeyword);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label className='search-bar'>Search Artists: </label>
+    <form className='search-bar' onSubmit={handleSubmit}>
+      <label />
       <input
         type='text'
-        className='search-bar'
+        className='form-control'
         value={searchKeyword}
         onChange={handleChange}
+        placeholder='Search by Song, Arist, Album, Genre or Date'
       ></input>
       {/* <button type="submit" className="btn btn-primary">
         Search

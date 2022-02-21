@@ -1,13 +1,13 @@
-import React from "react";
-// import "./Navbar.css";
-import { Container } from "react-bootstrap";
-import Navbar from "react-bootstrap/Navbar";
+import React from 'react';
+import './Navbar.css';
+import { Container } from 'react-bootstrap';
+import Navbar from 'react-bootstrap/Navbar';
 
 const NavBar = (props) => {
   return (
-    <Navbar className="dark fixed-top">
+    <Navbar>
       <Container>
-        <Navbar.Brand href="#home">Miles Above Music</Navbar.Brand>
+        <Navbar.Brand href='#home'>Miles Above Music</Navbar.Brand>
       </Container>
     </Navbar>
   );

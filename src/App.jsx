@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import MusicTable from './Components/MusicTable/MusicTable.jsx';
 import NavBar from './Components/Navbar/Navbar.jsx';
-import WelcomeHeader from './Components/WelcomeHeader/WelcomeHeader.jsx';
 import SearchBar from './Components/SearchBar/SearchBar';
 // import SongForm from "./Components/SongForm/SongForm";
 import TempModalSongForm from './Components/SongForm/SongForm';
@@ -52,8 +51,15 @@ function App() {
       </div>
       <div className='row'>
         <div className='column-left col-md-6'>
-          <WelcomeHeader />
+          <div className='welcome-header'>
+            <h1>Welcome Caitlin!</h1>
+            <p>What's your soundtrack for today?</p>
+          </div>
           <SearchBar getSearchResults={getSearchResults} />
+          <p className='small'>
+            Not finding what you want? Click here to add it to your list:
+            <button className='btn btn-primary addSong'>Add Song</button>
+          </p>
           {/* <TempModalSongForm addSong={addSong} /> */}
         </div>
         <div className='column-right col-md-6'>

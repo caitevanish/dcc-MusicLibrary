@@ -2,7 +2,7 @@ html,
 body,
 header {
   height: 100%;
-  background-image: url("../public/imgs/music-library-background.jpg");
+  background-image: url('../public/imgs/music-library-background.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
@@ -11,6 +11,45 @@ header {
 
 .App {
   text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #ffeed8;
+  text-align: center;
+  padding: 1em;
+  margin: 1em;
+  /* border: 1px;
+  border-style: solid;
+  border-color: crimson; */
+}
+
+p {
+  font-size: 24px;
+  color: #ffeed8;
+  text-align: center;
+}
+
+.small {
+  font-size: 1rem;
+  margin-top: 1em;
+}
+
+.btn-primary {
+  margin-left: 1em;
+  background-color: #ffc87e;
+  border-color: #3b2630;
+}
+
+.header {
+  margin: 1em;
+  margin-left: 2em;
+  margin-top: 4em;
+  padding: 1em;
+
+  /* border: 1px;
+  border-style: solid;
+  border-color: crimson; */
 }
 
 /* .container-fluid {
