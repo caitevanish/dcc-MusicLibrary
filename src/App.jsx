@@ -11,7 +11,8 @@ import UpdateSongForm from './Components/UpdateSongForm/UpdateSongForm';
 function App() {
   const [musicTable, setMusicTable] = useState([]);
   const [filteredMusic, setFilteredMusic] = useState([]);
-  // const [newSong, setNewSong] = useState("");
+  const [editId, setEditId] = useState(null);
+  const [formField, setFormFields] = useState('');
 
   useEffect(() => {
     getAllMusic();
@@ -48,6 +49,20 @@ function App() {
     return;
   }
 
+  async function editSong(id, newSong) {
+    // console.log(handleEdit);
+    try {
+      let updatedSong = await axios.put(
+        `http://127.0.0.1:8000/music/${id}/`,
+        newSong
+      );
+      console.log(updatedSong);
+    } catch {
+      console.log('error. Something went wrong.');
+    }
+    return;
+  }
+
   // async function editSong(event, updatedSong) {
   //   let song = await axios.put();
   // }
@@ -72,8 +87,17 @@ function App() {
         </div>
 
         <div className='column-right col-md-6'>
-          <MusicTable filteredMusic={filteredMusic} getAllMusic={getAllMusic} />
-          <UpdateSongForm />
+          <MusicTable
+            filteredMusic={filteredMusic}
+            getAllMusic={getAllMusic}
+            setEditId={setEditId}
+            setFormFields={setFormFields}
+          />
+          <UpdateSongForm
+            editId={editId}
+            editSong={editSong}
+            formField={formField}
+          />
         </div>
       </div>
     </div>

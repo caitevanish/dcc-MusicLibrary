@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const UpdateSongForm = (props) => {
   //Hoist up original song info from MusicLibrary to display as values to be changed
 
-  const [newTitle, setNewTitle] = useState('');
-  const [newArtist, setNewArtist] = useState('');
-  const [newAlbum, setNewAlbum] = useState('');
-  const [newGenre, setNewGenre] = useState('');
-  const [newReleaseDate, setNewReleaseDate] = useState('');
+  const [newTitle, setNewTitle] = useState(`${props.formField.title}`);
+  const [newArtist, setNewArtist] = useState(`${props.formField.artist}`);
+  const [newAlbum, setNewAlbum] = useState(`${props.formField.album}`);
+  const [newGenre, setNewGenre] = useState(`${props.formField.genre}`);
+  const [newReleaseDate, setNewReleaseDate] = useState();
 
-  function handleSubmit(event) {
+  function handleSubmit(event, id) {
     event.preventDefault();
     let newSong = {
       title: newTitle,
-      nartist: newArtist,
+      artist: newArtist,
       album: newAlbum,
       genre: newGenre,
       release_date: newReleaseDate,
     };
-    props.addSong(newSong);
+    props.editSong(id, newSong);
   }
 
   return (
     <div>
       <h2>Update Song:</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(event) => handleSubmit(event, props.editId)}>
         <div className='form-group'>
           <label htmlFor='song_title'>Song Title</label>
           <input
@@ -32,7 +32,7 @@ const UpdateSongForm = (props) => {
             onChange={(event) => setNewTitle(event.target.value)}
             value={newTitle}
             className='form-control'
-            placeholder='{song.}'
+            placeholder=''
           ></input>
         </div>
         <div className='form-group'>

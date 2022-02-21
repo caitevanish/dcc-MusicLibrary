@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import UpdateSongForm from '../UpdateSongForm/UpdateSongForm';
 // import "./MusicTable.css";
 
-function MusicTable({ filteredMusic, getAllMusic }) {
+function MusicTable({ filteredMusic, getAllMusic, setEditId, setFormFields }) {
   async function handleDelete(event, id) {
     event.preventDefault();
     try {
@@ -16,27 +17,20 @@ function MusicTable({ filteredMusic, getAllMusic }) {
     return;
   }
 
-  async function handleEdit(event, id) {
-    event.preventDefault();
-    console.log(handleEdit);
-    try {
-      let updatedSong = await axios.put(
-        `http://127.0.0.1:8000/music/${id}/`,
-        id
-      );
-      console.log(updatedSong);
-    } catch {
-      console.log('error. Something went wrong.');
-    }
-    return;
-  }
-
   // function handleUpdate(event, index) {
   //   event.preventDefault();
   //   // let result =
 
   //   return;
   // }
+
+  function handleClick(song) {
+    setEditId(song.id);
+    setFormFields(song);
+
+    //Create new hook in app.js
+    //grab whole song and pass it up to hook so it can be passed down into update form
+  }
 
   return (
     <>
@@ -63,7 +57,8 @@ function MusicTable({ filteredMusic, getAllMusic }) {
                     <td>{song.release_date}</td>
                     <td>
                       <button
-                        onClick={(event) => handleEdit(event, song.id)}
+                        onClick={() => handleClick(song)}
+                        // onClick={(event) => editSong(event, song.id)}
                         className='btn btn-primary'
                       >
                         Edit
