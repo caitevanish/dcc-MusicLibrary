@@ -39,8 +39,9 @@ function App() {
     setFilteredMusic(filteredList);
   }
 
-  function addSong(songToCreate) {
+  async function addSong(songToCreate) {
     console.log(songToCreate);
+    let result = await axios.post('http://127.0.0.1:8000/music/');
     return;
   }
 
@@ -60,7 +61,7 @@ function App() {
             Not finding what you want? Click here to add it to your list:
             <button className='btn btn-primary addSong'>Add Song</button>
           </p>
-          {/* <TempModalSongForm addSong={addSong} /> */}
+          <TempModalSongForm addSong={addSong} />
         </div>
         <div className='column-right col-md-6'>
           <MusicTable filteredMusic={filteredMusic} />

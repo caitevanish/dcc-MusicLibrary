@@ -1,10 +1,26 @@
 import { useState, useEffect } from 'react';
-import SearchBar from '../SearchBar/SearchBar';
+import axios from 'axios';
 // import "./MusicTable.css";
 
 function MusicTable({ filteredMusic }) {
- 
-  function deleteSong()
+  async function handleDelete(event, id) {
+    event.preventDefault();
+    try {
+      let result = await axios.delete(`http://127.0.0.1:8000/music/${id}/`);
+      console.log(result);
+    } catch {
+      console.log('error. Something went wrong');
+    }
+
+    return;
+  }
+
+  // function handleUpdate(event, index) {
+  //   event.preventDefault();
+  //   // let result =
+
+  //   return;
+  // }
 
   return (
     <>
@@ -21,14 +37,14 @@ function MusicTable({ filteredMusic }) {
               </tr>
             </thead>
             <tbody>
-              {filteredMusic.map((info, index) => {
+              {filteredMusic.map((song, index) => {
                 return (
                   <tr key={index}>
-                    <td>{info.artist}</td>
-                    <td>{info.title}</td>
-                    <td>{info.album}</td>
-                    <td>{info.genre}</td>
-                    <td>{info.release_date}</td>
+                    <td>{song.artist}</td>
+                    <td>{song.title}</td>
+                    <td>{song.album}</td>
+                    <td>{song.genre}</td>
+                    <td>{song.release_date}</td>
                     <td>
                       <button className='btn btn-primary'>
                         {/* <button
@@ -38,10 +54,11 @@ function MusicTable({ filteredMusic }) {
                           Edit
                         </button> */}
                       </button>
-                      <button className='btn btn-danger'>
-                        <button onClick={setDelete} className='btn btn-danger'>
-                          Delete
-                        </button>
+                      <button
+                        onClick={(event) => handleDelete(event, song.id)}
+                        className='btn btn-danger'
+                      >
+                        Delete
                       </button>
                     </td>
                   </tr>
