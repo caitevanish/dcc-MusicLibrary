@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import MusicTable from './Components/MusicTable/MusicTable.jsx';
 import NavBar from './Components/Navbar/Navbar.jsx';
 import SearchBar from './Components/SearchBar/SearchBar';
-// import SongForm from "./Components/SongForm/SongForm";
-import TempModalSongForm from './Components/SongForm/SongForm';
+import SongForm from './Components/SongForm/SongForm';
+// import TempModalSongForm from './Components/SongForm/SongForm';
 import axios from 'axios';
+import UpdateSongForm from './Components/UpdateSongForm/UpdateSongForm';
 
 function App() {
   const [musicTable, setMusicTable] = useState([]);
@@ -39,11 +40,17 @@ function App() {
     setFilteredMusic(filteredList);
   }
 
-  async function addSong(songToCreate) {
-    console.log(songToCreate);
-    let result = await axios.post('http://127.0.0.1:8000/music/');
+  async function addSong(newSong) {
+    console.log(newSong);
+    let result = await axios.post('http://127.0.0.1:8000/music/', newSong);
+    console.log(result);
+    getAllMusic();
     return;
   }
+
+  // async function editSong(event, updatedSong) {
+  //   let song = await axios.put();
+  // }
 
   return (
     <div className='app'>
@@ -61,10 +68,12 @@ function App() {
             Not finding what you want? Click here to add it to your list:
             <button className='btn btn-primary addSong'>Add Song</button>
           </p>
-          <TempModalSongForm addSong={addSong} />
+          <SongForm addSong={addSong} />
         </div>
+
         <div className='column-right col-md-6'>
-          <MusicTable filteredMusic={filteredMusic} />
+          <MusicTable filteredMusic={filteredMusic} getAllMusic={getAllMusic} />
+          <UpdateSongForm />
         </div>
       </div>
     </div>

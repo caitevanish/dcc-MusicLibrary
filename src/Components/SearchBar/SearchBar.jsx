@@ -21,10 +21,10 @@ const SearchBar = ({ getSearchResults }) => {
     <form className='search-bar' onSubmit={handleSubmit}>
       <label />
       <input
+        onChange={handleChange}
         type='text'
         className='form-control'
         value={searchKeyword}
-        onChange={handleChange}
         placeholder='Search by Song, Arist, Album, Genre or Date'
       ></input>
       {/* <button type="submit" className="btn btn-primary">

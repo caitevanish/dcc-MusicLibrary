@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap/Modal';
 
-const TempModalSongForm = (props) => {
+const TempModalSongForm = ({ addSong }) => {
   //Bind each input to a state variabl
   const [newTitle, setNewTitle] = useState('');
   const [newArtist, setNewArtist] = useState('');
