@@ -17,13 +17,6 @@ function MusicTable({ filteredMusic, getAllMusic, setEditId, setFormFields }) {
     return;
   }
 
-  // function handleUpdate(event, index) {
-  //   event.preventDefault();
-  //   // let result =
-
-  //   return;
-  // }
-
   function handleClick(song) {
     setEditId(song.id);
     setFormFields(song);
@@ -58,7 +51,6 @@ function MusicTable({ filteredMusic, getAllMusic, setEditId, setFormFields }) {
                     <td>
                       <button
                         onClick={() => handleClick(song)}
-                        // onClick={(event) => editSong(event, song.id)}
                         className='btn btn-primary'
                       >
                         Edit

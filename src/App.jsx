@@ -50,7 +50,6 @@ function App() {
   }
 
   async function editSong(id, newSong) {
-    // console.log(handleEdit);
     try {
       let updatedSong = await axios.put(
         `http://127.0.0.1:8000/music/${id}/`,
@@ -62,10 +61,6 @@ function App() {
     }
     return;
   }
-
-  // async function editSong(event, updatedSong) {
-  //   let song = await axios.put();
-  // }
 
   return (
     <div className='app'>

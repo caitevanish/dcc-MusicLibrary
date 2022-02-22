@@ -42,7 +42,7 @@ const UpdateSongForm = (props) => {
             onChange={(event) => setNewArtist(event.target.value)}
             value={newArtist}
             className='form-control'
-            placeholder='{song.}'
+            placeholder=''
           ></input>
         </div>
         <div className='form-group'>
@@ -52,7 +52,7 @@ const UpdateSongForm = (props) => {
             onChange={(event) => setNewAlbum(event.target.value)}
             value={newAlbum}
             className='form-control'
-            placeholder='{song.}'
+            placeholder=''
           ></input>
         </div>
         <div className='form-group'>
@@ -62,7 +62,7 @@ const UpdateSongForm = (props) => {
             onChange={(event) => setNewGenre(event.target.value)}
             value={newGenre}
             className='form-control'
-            placeholder='{song.}'
+            placeholder=''
           ></input>
         </div>
         <div className='form-group'>
@@ -72,7 +72,7 @@ const UpdateSongForm = (props) => {
             onChange={(event) => setNewReleaseDate(event.target.value)}
             value={newReleaseDate}
             className='form-control'
-            placeholder='{song.}'
+            placeholder=''
           ></input>
         </div>
         <button onSubmit={handleSubmit} type='submit'>
